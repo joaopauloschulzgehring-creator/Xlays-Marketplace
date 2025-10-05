@@ -44,6 +44,7 @@
     .product img {
       width: 100%;
       border-radius: 10px;
+      cursor: pointer;
     }
 
     .product h2 {
@@ -77,20 +78,49 @@
       font-size: 0.9em;
       color: #aaa;
     }
+
+    /* Lightbox overlay */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .lightbox-content {
+      margin: auto;
+      display: block;
+      max-width: 80%;
+      max-height: 80%;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>🛒 Xlays’ Roblox Store</h1>
-    <p>Official shop for Roblox game assets — buy via Gamepasses!</p>
+    <p>Click an image to preview, then buy via Gamepass!</p>
   </header>
 
   <main>
     <!-- Product 1 -->
     <div class="product">
-      <a href="https://www.roblox.com/game-pass/YOUR-GAMEPASS-ID-1" target="_blank">
-        <img src="https://i.ibb.co/hxz4zJCY/simulator-pack.webp" alt="Simulator Pack">
-      </a>
+      <img src="https://i.ibb.co/hxz4zJCY/simulator-pack.webp" alt="Simulator Pack" onclick="openLightbox(this.src)">
       <h2>Simulator Pack (50+ Models)</h2>
       <p class="price">💰 30 Robux</p>
       <p>Includes pets, GUIs, scripts, and more!</p>
@@ -99,20 +129,35 @@
 
     <!-- Product 2 -->
     <div class="product">
-      <a href="https://www.roblox.com/game-pass/YOUR-GAMEPASS-ID-2" target="_blank">
-        <img src="https://i.ibb.co/hxz4zJCY/simulator-pack.webp" alt="Script Bundle">
-      </a>
+      <img src="https://i.ibb.co/hxz4zJCY/simulator-pack.webp" alt="Script Bundle" onclick="openLightbox(this.src)">
       <h2>Script Bundle</h2>
       <p class="price">💰 50 Robux</p>
       <p>10 ready-to-use scripts for tycoons and simulators.</p>
       <a class="buy" href="https://www.roblox.com/game-pass/YOUR-GAMEPASS-ID-2" target="_blank">Buy via Gamepass</a>
     </div>
-
-    <!-- Add more products by copying the above <div class="product"> block -->
   </main>
 
   <footer>
     <p>© 2025 Xlays Roblox Store — Not affiliated with Roblox Corporation</p>
   </footer>
+
+  <!-- Lightbox overlay -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      lightbox.style.display = 'block';
+      img.src = src;
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
