@@ -26,6 +26,6 @@ Live demo: [Insert your Replit or GitHub Pages link here]
 
 1. **Clone or download** this repository:  
    ```bash
-   git clone https://github.com/joaopauloschulzgehring-creator/roblox-store.git
+   git clone https://github.com/joaopauloschulzgehring-creator/xlays-roblox-store.git
    
 2. then watch a tutorial because i cant explain
